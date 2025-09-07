@@ -312,7 +312,7 @@ scaler = pickle.load(open("cr_rec_models/scaler.pkl", 'rb'))
 model_gbc = pickle.load(open("cr_rec_models/model_gbc.pkl", 'rb'))
 soil_df = pd.read_csv("shc_scaled_to_crop_range.csv")
 
-model_url = "https://github.com/ArnabGupta2004/AgroBot-Assistant/releases/download/v1.0/cr_price.pkl"
+model_url = "https://github.com/ArnabGupta2004/KrishiMitra/releases/download/v1.0/cr_price.pkl"
 model_path = "cr_price_models/cr_price.pkl"
 
 def download_file(url, path):
@@ -1360,3 +1360,4 @@ else:
         
 
         st.rerun()
+
