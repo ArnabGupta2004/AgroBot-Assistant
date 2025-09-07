@@ -23,12 +23,15 @@ from deep_translator import GoogleTranslator
 from langdetect import detect
 
 import nltk
+NLTK_DIR = os.path.join(os.getcwd(), "nltk_data")
+nltk.data.path.append(NLTK_DIR)
+
 nltk_packages = ["stopwords", "punkt", "wordnet", "omw-1.4"]
 for pkg in nltk_packages:
     try:
-        nltk.data.find(f"corpora/{pkg}")
+        nltk.data.find(f"{'tokenizers' if pkg=='punkt' else 'corpora'}/{pkg}")
     except LookupError:
-        nltk.download(pkg)
+        nltk.download(pkg, download_dir=NLTK_DIR, quiet=True)
 
 # -------------------------
 # Data class for message
@@ -276,11 +279,12 @@ with st.sidebar:
     st.image("logo with text.png", width=150)
     st.markdown(f"### {get_ui_text('language_selector', current_lang)}")
     selected_language = st.selectbox(
-        "",
+        "Select language",  # <- give non-empty
         options=list(SUPPORTED_LANGUAGES.keys()),
         format_func=lambda x: SUPPORTED_LANGUAGES[x],
         index=list(SUPPORTED_LANGUAGES.keys()).index(st.session_state.selected_language),
-        key="language_selector"
+        key="language_selector",
+        label_visibility="collapsed"  # hides it
     )
     
     if selected_language != st.session_state.selected_language:
@@ -1343,6 +1347,7 @@ else:
         
 
         st.rerun()
+
 
 
 
