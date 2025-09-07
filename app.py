@@ -16,7 +16,6 @@ import requests
 from datetime import datetime, timedelta
 import json
 import toml
-import whisper
 import streamlit.components.v1 as components
 from tensorflow.keras.applications import VGG16
 from tensorflow.keras.preprocessing import image
@@ -298,8 +297,6 @@ def load_css():
 # -------------------------
 # Load Model & Vectorizer
 # -------------------------
-stt_model = whisper.load_model("base")
-
 cb_model = joblib.load("intent_model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
@@ -363,27 +360,6 @@ def predict_intent(user_input):
     tag = cb_model.predict(vec)[0]
     return tag
 
-def convert_audio_to_text(audio_file):
-    """
-    Convert Streamlit UploadedFile audio to text using Whisper (Windows-safe).
-    """
-    try:
-        # Save the uploaded file to a temp path manually
-        temp_path = os.path.join(tempfile.gettempdir(), audio_file.name)
-        with open(temp_path, "wb") as f:
-            f.write(audio_file.getbuffer())
-
-        # Transcribe
-        result = stt_model.transcribe(temp_path)
-
-        # Optionally delete the temp file after transcription
-        os.remove(temp_path)
-
-        return result["text"]
-
-    except Exception as e:
-        st.error(f"Audio transcription failed: {e}")
-        return ""
 
 def crop_model_prediction(uploaded_file):
     try:
@@ -1360,4 +1336,5 @@ else:
         
 
         st.rerun()
+
 
