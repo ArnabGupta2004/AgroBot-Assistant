@@ -6,7 +6,6 @@ import tensorflow as tf
 import numpy as np
 import re
 import os
-import nltk
 import tempfile
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
@@ -22,6 +21,14 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 from deep_translator import GoogleTranslator
 from langdetect import detect
+
+import nltk
+nltk_packages = ["stopwords", "punkt", "wordnet", "omw-1.4"]
+for pkg in nltk_packages:
+    try:
+        nltk.data.find(f"corpora/{pkg}")
+    except LookupError:
+        nltk.download(pkg)
 
 # -------------------------
 # Data class for message
@@ -1336,5 +1343,6 @@ else:
         
 
         st.rerun()
+
 
 
