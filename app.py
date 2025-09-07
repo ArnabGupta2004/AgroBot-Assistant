@@ -312,8 +312,25 @@ scaler = pickle.load(open("cr_rec_models/scaler.pkl", 'rb'))
 model_gbc = pickle.load(open("cr_rec_models/model_gbc.pkl", 'rb'))
 soil_df = pd.read_csv("shc_scaled_to_crop_range.csv")
 
-# Import crop price prediction models
-model_cr_pr = joblib.load("cr_price_models/cr_price.pkl")
+model_url = "https://github.com/ArnabGupta2004/AgroBot-Assistant/releases/download/v1.0/cr_price.pkl"
+model_path = "cr_price_models/cr_price.pkl"
+
+def download_file(url, path):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    if not os.path.exists(path):
+        print(f"Downloading {os.path.basename(path)}...")
+        r = requests.get(url, stream=True)
+        r.raise_for_status()
+        with open(path, "wb") as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
+        print(f"{os.path.basename(path)} downloaded successfully!")
+
+# Ensure model file is available
+download_file(model_url, model_path)
+
+# Load price prediction model + encoders
+model_cr_pr = joblib.load(model_path)
 le_commodity = joblib.load("cr_price_models/le_commodity.pkl")
 le_district = joblib.load("cr_price_models/le_district.pkl")
 le_market = joblib.load("cr_price_models/le_market.pkl")
@@ -1341,4 +1358,5 @@ else:
             response = get_response(intent)
             st.session_state.history.append(Message("ai", response))
         
+
         st.rerun()
