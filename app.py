@@ -50,15 +50,7 @@ SUPPORTED_LANGUAGES = {
     'en': 'English',
     'hi': 'हिंदी (Hindi)',
     'bn': 'বাংলা (Bengali)',
-    'te': 'తెలుగు (Telugu)',
-    'ta': 'தமிழ் (Tamil)',
-    'mr': 'मराठी (Marathi)',
-    'gu': 'ગુજરાતી (Gujarati)',
-    'kn': 'ಕನ್ನಡ (Kannada)',
-    'ml': 'മലയാളം (Malayalam)',
-    'pa': 'ਪੰਜਾਬੀ (Punjabi)',
-    'or': 'ଓଡ଼ିଆ (Odia)',
-    'as': 'অসমীয়া (Assamese)'
+    'pa': 'ਪੰਜਾਬੀ (Punjabi)'
 }
 
 # Translation functions
@@ -225,34 +217,146 @@ def get_ui_text(key, lang='en'):
             'fallback_response': 'खुशी है, मेरे पास यह जानकारी नहीं है। कृपया एक कृषि विशेषज्ञ से संपर्क करें।'
         },
         'bn': {
-            'app_title': 'কৃষিমিত্র',
-            'app_subtitle': 'আপনার স্মার্ট কৃষি সহায়ক',
+            'app_title': 'কৃষি মিত্র',
+            'app_subtitle': 'আপনার স্মার্ট কৃষি সহকারী',
             'language_selector': 'ভাষা নির্বাচন করুন',
-            'type_message': 'আপনার বার্তা টাইপ করুন...',
-            'location_prompt': 'আপনার অবস্থান প্রদান করুন',
+            'type_message': 'আপনার বার্তা লিখুন...',
+            'location_prompt': 'আপনার অবস্থান দিন',
             'submit': 'জমা দিন',
             'location': 'অবস্থান',
             'select_state': 'রাজ্য নির্বাচন করুন:',
-            'greeting_message': 'নমস্কার!\n\nআমি **কৃষিমিত্র**, আজ আমি আপনাকে কীভাবে সাহায্য করতে পারি?',
-            'weather_location_request': 'দয়া করে আপনার অবস্থান প্রদান করুন।',
-            'crop_location_request': 'দয়া করে আপনার অবস্থান প্রদান করুন।',
-            'disease_image_request': 'রোগ শনাক্ত করতে দয়া করে ফসলের একটি ছবি আপলোড করুন।',
-            'fertilizer_info_request': 'সার সুপারিশের জন্য দয়া করে মাটি এবং ফসলের তথ্য প্রদান করুন।',
-            'soil_health_request': 'বিশ্লেষণের জন্য দয়া করে মাটির স্বাস্থ্য পরামিতি প্রদান করুন।',
-            'market_info_request': 'দাম পূর্বাভাসের জন্য দয়া করে বাজারের তথ্য প্রদান করুন।',
-            'fallback_response': 'দুঃখিত, আমার কাছে এই তথ্য নেই। দয়া করে একজন কৃষি বিশেষজ্ঞের সাথে যোগাযোগ করুন।'
+            'weather_report': 'আবহাওয়ার প্রতিবেদন',
+            'current_conditions': 'বর্তমান অবস্থা:',
+            'temperature': 'তাপমাত্রা',
+            'condition': 'আবহাওয়া',
+            'humidity': 'আর্দ্রতা',
+            'wind_speed': 'বাতাসের গতি',
+            'atmospheric_pressure': 'বায়ুমণ্ডলীয় চাপ',
+            'daylight_hours': 'দিনের আলো ঘন্টা',
+            'rainfall': 'বৃষ্টি',
+            'agricultural_alerts': 'কৃষি সতর্কতা',
+            'farming_recommendations': 'কৃষি সুপারিশ',
+            'crop_recommendation': 'ফসল সুপারিশ',
+            'soil_profile': 'মাটির প্রোফাইল:',
+            'weather_conditions': 'আবহাওয়ার অবস্থা:',
+            'recommended_crop': 'প্রস্তাবিত ফসল:',
+            'fertilizer_form_title': 'সারের সুপারিশের জন্য অবস্থান ও ফসলের তথ্য দিন',
+            'crop_type': 'ফসলের ধরন:',
+            'soil_type': 'মাটির ধরন:',
+            'get_fertilizer_rec': 'সারের সুপারিশ পান',
+            'fertilizer_rec_report': 'সারের সুপারিশ প্রতিবেদন',
+            'environmental_conditions': 'পরিবেশগত অবস্থা:',
+            'soil_nutrient_profile': 'মাটির পুষ্টি প্রোফাইল:',
+            'crop_soil_info': 'ফসল ও মাটির তথ্য:',
+            'fertilizer_recommendation': 'সারের সুপারিশ:',
+            'application_guidelines': 'ব্যবহারের নির্দেশিকা:',
+            'important_notes': 'গুরুত্বপূর্ণ নোট:',
+            'market_price_form': 'মূল্য অনুমানের জন্য বাজার তথ্য দিন',
+            'enter_date': 'তারিখ লিখুন (DD-MM-YYYY):',
+            'enter_district': 'জেলা লিখুন:',
+            'enter_commodity': 'ফসল/পণ্য লিখুন:',
+            'get_price_prediction': 'মূল্য অনুমান পান',
+            'market_price_prediction': 'বাজার মূল্য অনুমান',
+            'predicted_modal_price': 'প্রত্যাশিত মডেল মূল্য',
+            'disease_detection_prompt': 'ফসলের ছবি আপলোড করুন রোগ শনাক্ত করার জন্য',
+            'choose_image': 'একটি ছবি নির্বাচন করুন...',
+            'crop_disease_result': 'ফসল রোগ শনাক্তকরণের ফলাফল',
+            'detected_disease': 'শনাক্ত করা রোগ:',
+            'confidence_level': 'আস্থা স্তর:',
+            'recommendation': 'সুপারিশ:',
+            'soil_health_form': 'মাটির স্বাস্থ্য সম্পর্কিত তথ্য দিন',
+            'soil_ph': 'মাটির pH:',
+            'organic_matter': 'জৈব পদার্থ (%):',
+            'soil_moisture': 'মাটির আর্দ্রতা (%):',
+            'get_soil_analysis': 'মাটির স্বাস্থ্য বিশ্লেষণ পান',
+            'soil_health_report': 'মাটির স্বাস্থ্য বিশ্লেষণ প্রতিবেদন',
+            'soil_parameters': 'মাটির পরামিতি:',
+            'analysis': 'বিশ্লেষণ:',
+            'recommendations': 'সুপারিশ:',
+            'greeting_message': 'নমস্কার!\n\nআমি **কৃষি মিত্র**, আমি কীভাবে আপনার সাহায্য করতে পারি?',
+            'weather_location_request': 'দয়া করে আপনার অবস্থান দিন।',
+            'crop_location_request': 'দয়া করে আপনার অবস্থান দিন।',
+            'disease_image_request': 'দয়া করে রোগ শনাক্ত করতে ফসলের ছবি আপলোড করুন।',
+            'fertilizer_info_request': 'সারের সুপারিশের জন্য মাটি ও ফসলের তথ্য দিন।',
+            'soil_health_request': 'বিশ্লেষণের জন্য মাটির স্বাস্থ্য সম্পর্কিত তথ্য দিন।',
+            'market_info_request': 'মূল্য অনুমানের জন্য বাজার তথ্য দিন।',
+            'fallback_response': 'দুঃখিত, আমার কাছে এই তথ্য নেই। একজন কৃষি বিশেষজ্ঞের সাথে যোগাযোগ করুন।'
+        },
+        'pa': {
+            'app_title': 'ਕ੍ਰਿਸ਼ੀ ਮਿਤਰ',
+            'app_subtitle': 'ਤੁਹਾਡਾ ਸਮਾਰਟ ਖੇਤੀਬਾੜੀ ਸਹਾਇਕ',
+            'language_selector': 'ਭਾਸ਼ਾ ਚੁਣੋ',
+            'type_message': 'ਆਪਣਾ ਸੁਨੇਹਾ ਟਾਈਪ ਕਰੋ...',
+            'location_prompt': 'ਆਪਣਾ ਸਥਾਨ ਦਿਓ',
+            'submit': 'ਜਮ੍ਹਾ ਕਰੋ',
+            'location': 'ਸਥਾਨ',
+            'select_state': 'ਰਾਜ ਚੁਣੋ:',
+            'weather_report': 'ਮੌਸਮ ਰਿਪੋਰਟ',
+            'current_conditions': 'ਮੌਜੂਦਾ ਹਾਲਾਤ:',
+            'temperature': 'ਤਾਪਮਾਨ',
+            'condition': 'ਹਾਲਾਤ',
+            'humidity': 'ਨਮੀ',
+            'wind_speed': 'ਹਵਾ ਦੀ ਗਤੀ',
+            'atmospheric_pressure': 'ਵਾਤਾਵਰਣੀਕ ਦਬਾਅ',
+            'daylight_hours': 'ਦਿਨ ਦੇ ਘੰਟੇ',
+            'rainfall': 'ਬਰਸਾਤ',
+            'agricultural_alerts': 'ਖੇਤੀਬਾੜੀ ਚੇਤਾਵਨੀ',
+            'farming_recommendations': 'ਖੇਤੀਬਾੜੀ ਸਿਫ਼ਾਰਸ਼ਾਂ',
+            'crop_recommendation': 'ਫਸਲ ਸਿਫ਼ਾਰਸ਼',
+            'soil_profile': 'ਮਿੱਟੀ ਪ੍ਰੋਫ਼ਾਈਲ:',
+            'weather_conditions': 'ਮੌਸਮ ਦੀਆਂ ਹਾਲਾਤ:',
+            'recommended_crop': 'ਸਿਫ਼ਾਰਸ਼ੀ ਫਸਲ:',
+            'fertilizer_form_title': 'ਖਾਦ ਦੀ ਸਿਫਾਰਸ਼ ਲਈ ਸਥਾਨ ਅਤੇ ਫਸਲ ਦੀ ਜਾਣਕਾਰੀ ਦਿਓ',
+            'crop_type': 'ਫਸਲ ਦੀ ਕਿਸਮ:',
+            'soil_type': 'ਮਿੱਟੀ ਦੀ ਕਿਸਮ:',
+            'get_fertilizer_rec': 'ਖਾਦ ਦੀ ਸਿਫ਼ਾਰਸ਼ ਪ੍ਰਾਪਤ ਕਰੋ',
+            'fertilizer_rec_report': 'ਖਾਦ ਦੀ ਸਿਫ਼ਾਰਸ਼ ਰਿਪੋਰਟ',
+            'environmental_conditions': 'ਵਾਤਾਵਰਣੀਕ ਹਾਲਾਤ:',
+            'soil_nutrient_profile': 'ਮਿੱਟੀ ਪੋਸ਼ਕ ਪ੍ਰੋਫ਼ਾਈਲ:',
+            'crop_soil_info': 'ਫਸਲ ਅਤੇ ਮਿੱਟੀ ਜਾਣਕਾਰੀ:',
+            'fertilizer_recommendation': 'ਖਾਦ ਦੀ ਸਿਫ਼ਾਰਸ਼:',
+            'application_guidelines': 'ਲਾਗੂ ਕਰਨ ਦੀਆਂ ਹਦਾਇਤਾਂ:',
+            'important_notes': 'ਮਹੱਤਵਪੂਰਨ ਨੋਟ:',
+            'market_price_form': 'ਕੀਮਤ ਅਨੁਮਾਨ ਲਈ ਬਜ਼ਾਰ ਜਾਣਕਾਰੀ ਦਿਓ',
+            'enter_date': 'ਤਾਰੀਖ ਦਿਓ (DD-MM-YYYY):',
+            'enter_district': 'ਜ਼ਿਲ੍ਹਾ ਦਿਓ:',
+            'enter_commodity': 'ਫਸਲ/ਵਸਤੂ ਦਿਓ:',
+            'get_price_prediction': 'ਕੀਮਤ ਅਨੁਮਾਨ ਲਵੋ',
+            'market_price_prediction': 'ਬਜ਼ਾਰ ਕੀਮਤ ਅਨੁਮਾਨ',
+            'predicted_modal_price': 'ਅਨੁਮਾਨਿਤ ਮਾਡਲ ਕੀਮਤ',
+            'disease_detection_prompt': 'ਰੋਗ ਦਾ ਪਤਾ ਲਗਾਉਣ ਲਈ ਫਸਲ ਦੀ ਤਸਵੀਰ ਅੱਪਲੋਡ ਕਰੋ',
+            'choose_image': 'ਤਸਵੀਰ ਚੁਣੋ...',
+            'crop_disease_result': 'ਫਸਲ ਰੋਗ ਪਤਾ ਲਗਾਉਣ ਦਾ ਨਤੀਜਾ',
+            'detected_disease': 'ਪਤਾ ਲਗਾਇਆ ਰੋਗ:',
+            'confidence_level': 'ਭਰੋਸੇ ਦਾ ਪੱਧਰ:',
+            'recommendation': 'ਸਿਫ਼ਾਰਸ਼:',
+            'soil_health_form': 'ਮਿੱਟੀ ਦੇ ਸਿਹਤ ਦੀ ਜਾਣਕਾਰੀ ਦਿਓ',
+            'soil_ph': 'ਮਿੱਟੀ pH:',
+            'organic_matter': 'ਜੈਵਿਕ ਪਦਾਰਥ (%):',
+            'soil_moisture': 'ਮਿੱਟੀ ਦੀ ਨਮੀ (%):',
+            'get_soil_analysis': 'ਮਿੱਟੀ ਸਿਹਤ ਵਿਸ਼ਲੇਸ਼ਣ ਪ੍ਰਾਪਤ ਕਰੋ',
+            'soil_health_report': 'ਮਿੱਟੀ ਸਿਹਤ ਵਿਸ਼ਲੇਸ਼ਣ ਰਿਪੋਰਟ',
+            'soil_parameters': 'ਮਿੱਟੀ ਪੈਰਾਮੀਟਰ:',
+            'analysis': 'ਵਿਸ਼ਲੇਸ਼ਣ:',
+            'recommendations': 'ਸਿਫ਼ਾਰਸ਼ਾਂ:',
+            'greeting_message': 'ਸਤ ਸ੍ਰੀ ਅਕਾਲ!\n\nਮੈਂ **ਕ੍ਰਿਸ਼ੀ ਮਿਤਰ** ਹਾਂ, ਮੈਂ ਤੁਹਾਡੀ ਕਿਵੇਂ ਮਦਦ ਕਰ ਸਕਦਾ ਹਾਂ?',
+            'weather_location_request': 'ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਸਥਾਨ ਦਿਓ।',
+            'crop_location_request': 'ਕਿਰਪਾ ਕਰਕੇ ਆਪਣਾ ਸਥਾਨ ਦਿਓ।',
+            'disease_image_request': 'ਕਿਰਪਾ ਕਰਕੇ ਰੋਗ ਪਤਾ ਕਰਨ ਲਈ ਫਸਲ ਦੀ ਤਸਵੀਰ ਅੱਪਲੋਡ ਕਰੋ।',
+            'fertilizer_info_request': 'ਖਾਦ ਦੀ ਸਿਫਾਰਸ਼ ਲਈ ਮਿੱਟੀ ਅਤੇ ਫਸਲ ਦੀ ਜਾਣਕਾਰੀ ਦਿਓ।',
+            'soil_health_request': 'ਵਿਸ਼ਲੇਸ਼ਣ ਲਈ ਮਿੱਟੀ ਸਿਹਤ ਪੈਰਾਮੀਟਰ ਦਿਓ।',
+            'market_info_request': 'ਕੀਮਤ ਅਨੁਮਾਨ ਲਈ ਬਜ਼ਾਰ ਜਾਣਕਾਰੀ ਦਿਓ।',
+            'fallback_response': 'ਮਾਫ਼ ਕਰਨਾ, ਮੇਰੇ ਕੋਲ ਇਹ ਜਾਣਕਾਰੀ ਨਹੀਂ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਕਿਸਾਨ ਮਾਹਿਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।'
         }
-        # Add more languages as needed
     }
+    return ui_texts.get(lang, ui_texts['bn']).get(key, ui_texts['bn'].get(key, key))
     
-    return ui_texts.get(lang, ui_texts['en']).get(key, ui_texts['en'][key])
-
 # Initialize session state for language
 def initialize_language_session():
     if "selected_language" not in st.session_state:
-        st.session_state.selected_language = 'en'
+        st.session_state.selected_language = 'bn'
     if "user_input_language" not in st.session_state:
-        st.session_state.user_input_language = 'en'
+        st.session_state.user_input_language = 'bn'
 
 col1, col2 = st.columns([1,10])
 
@@ -1218,8 +1322,8 @@ elif st.session_state.get("awaiting_market_price_info", False):
 # Crop Disease Detection Handler
 # -------------------------
 elif st.session_state.get("awaiting_disease_detection", False):
+    st.markdown('<div id="input-anchor-disease"></div>', unsafe_allow_html=True)
     with chat_placeholder:
-        st.markdown('<div id="input-anchor-disease"></div>', unsafe_allow_html=True)
         st.markdown(f"**{get_ui_text('disease_detection_prompt', current_lang)}**")
         cols = st.columns((6, 1))
 
@@ -1257,8 +1361,8 @@ elif st.session_state.get("awaiting_disease_detection", False):
             st.rerun()
 
 elif st.session_state.get("awaiting_soil_health", False):
+    st.markdown('<div id="input-anchor-soil"></div>', unsafe_allow_html=True)
     with chat_placeholder:
-        st.markdown('<div id="input-anchor-soil"></div>', unsafe_allow_html=True)
         st.markdown(f"**{get_ui_text('soil_health_form', current_lang)}**")
         
         scroll_to_anchor("input-anchor-soil")
@@ -1347,6 +1451,7 @@ else:
         
 
         st.rerun()
+
 
 
 
