@@ -349,14 +349,14 @@ def get_ui_text(key, lang='en'):
             'fallback_response': 'ਮਾਫ਼ ਕਰਨਾ, ਮੇਰੇ ਕੋਲ ਇਹ ਜਾਣਕਾਰੀ ਨਹੀਂ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਕਿਸਾਨ ਮਾਹਿਰ ਨਾਲ ਸੰਪਰਕ ਕਰੋ।'
         }
     }
-    return ui_texts.get(lang, ui_texts['bn']).get(key, ui_texts['bn'].get(key, key))
+    return ui_texts.get(lang, ui_texts['hi']).get(key, ui_texts['hi'].get(key, key))
     
 # Initialize session state for language
 def initialize_language_session():
     if "selected_language" not in st.session_state:
-        st.session_state.selected_language = 'bn'
+        st.session_state.selected_language = 'hi'
     if "user_input_language" not in st.session_state:
-        st.session_state.user_input_language = 'bn'
+        st.session_state.user_input_language = 'hi'
 
 col1, col2 = st.columns([1,10])
 
@@ -1451,6 +1451,7 @@ else:
         
 
         st.rerun()
+
 
 
 
