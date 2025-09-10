@@ -1219,7 +1219,7 @@ if st.session_state.awaiting_weather:
                 
                 bot_reply = get_weather(location.strip())
                 st.session_state.history.append(Message("human", location.strip()))
-                st.session_state.history.append(Message("ai", bot_reply))
+                st.session_state.history.append(Message("ai", bot_reply.strip().replace("</div>", "")))
                 st.session_state.awaiting_weather = False
                 st.rerun()
 
@@ -1242,7 +1242,7 @@ elif st.session_state.awaiting_crop:
             # show the user's selection in chat history for clarity
             st.session_state.history.append(Message("human", selected_state))
             bot_reply = get_crop_recommendation(selected_state)
-            st.session_state.history.append(Message("ai", bot_reply))
+            st.session_state.history.append(Message("ai", bot_reply.strip().replace("</div>", "")))
             st.session_state.awaiting_crop = False
             st.rerun()
 
@@ -1281,7 +1281,7 @@ elif st.session_state.awaiting_fertilizer_pesticide_advice:
                     st.session_state.history.append(Message("human", user_input))
                     
                     bot_reply = get_fertilizer_recommendation(temperature, humidity, moisture, soil_type, crop_type, nitrogen, phosphorus, potassium)
-                    st.session_state.history.append(Message("ai", bot_reply))
+                    st.session_state.history.append(Message("ai", bot_reply.strip().replace("</div>", "")))
                 
                 st.session_state.awaiting_fertilizer_pesticide_advice = False
                 st.rerun()
@@ -1304,7 +1304,7 @@ elif st.session_state.get("awaiting_market_price_info", False):
                 st.session_state.history.append(Message("human", user_input))
                 
                 bot_reply = get_market_price_prediction(date_str, district, commodity)
-                st.session_state.history.append(Message("ai", bot_reply))
+                st.session_state.history.append(Message("ai", bot_reply.strip().replace("</div>", "")))
                 st.session_state.awaiting_market_price_info = False
                 st.rerun()
 
@@ -1336,10 +1336,12 @@ elif st.session_state.get("awaiting_disease_detection", False):
 """
                 
                 # Translate if not English
+                bot_reply = bot_reply.replace("</div>", "")
                 if current_lang != 'en':
                     bot_reply = translate_text(bot_reply, target_lang=current_lang, source_lang='en')
+                    bot_reply = bot_reply.replace("</div>", "")
 
-                st.session_state.history.append(Message("ai", bot_reply))
+                st.session_state.history.append(Message("ai", bot_reply.strip().replace("</div>", "")))
 
             except Exception as e:
                 error_msg = f"❌ Error during disease prediction: {str(e)}"
@@ -1391,10 +1393,12 @@ elif st.session_state.get("awaiting_soil_health", False):
 """
                 
                 # Translate if not English
+                bot_reply = bot_reply.replace("</div>", "")
                 if current_lang != 'en':
                     bot_reply = translate_text(bot_reply, target_lang=current_lang, source_lang='en')
+                    bot_reply = bot_reply.replace("</div>", "")
                 
-                st.session_state.history.append(Message("ai", bot_reply))
+                st.session_state.history.append(Message("ai", bot_reply.strip().replace("</div>", "")))
                 st.session_state.awaiting_soil_health = False
                 st.rerun()
 
@@ -1441,6 +1445,7 @@ else:
         
 
         st.rerun()
+
 
 
 
